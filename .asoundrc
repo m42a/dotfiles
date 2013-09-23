@@ -1,0 +1,80 @@
+#pcm.!default {
+#type plug
+#slave.pcm "ladcomp_compressor"
+#capture.pcm  "dsnoop"
+#}
+
+# This is so stupid
+# I have no idea what's going on anymore
+#pcm.pass {
+#	type plug
+#	slave {
+#		pcm ladcomp_compressor
+#		format FLOAT
+#	}
+#}
+
+pcm.ladcomp_compressor {
+	type ladspa
+	slave.pcm "ladcomp_limiter";
+	path "/usr/lib/ladspa/";
+	plugins [
+	{
+		label dysonCompress
+		input {
+			#peak limit, release time, fast ratio, ratio
+			controls [0 1 0.5 0.99]
+		}
+	}
+	]
+}
+
+pcm.ladcomp_limiter {
+	type ladspa
+	slave.pcm "plug:dmix"
+	path "/usr/lib/ladspa/";
+	plugins [
+	{
+		label fastLookaheadLimiter
+		input {
+			#InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
+			controls [ 20 0 0.8  ]
+		}
+	}
+	]
+}
+
+pcm.!default {
+	type            asym
+	playback.pcm        "plug:ladcomp_compressor"
+	capture.pcm        "plug:dsnoop" 
+}
+
+pcm.null {
+	type null
+}
+
+pcm.dummy {
+	type hw
+	card 0
+}
+
+ctl.dummy {
+	type hw
+	card 0
+}
+
+#pcm.dmixplug {
+#	type plug
+#	slave {
+#		pcm dmix
+#	}
+#}
+
+#pcm.dmix0 {
+#	type dmix
+#	ipc_key 11334
+#	slave {
+#		pcm "hw:0,0"
+#	}
+#}
