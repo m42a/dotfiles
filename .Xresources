@@ -1,0 +1,20 @@
+urxvt.background: #000011
+urxvt.foreground: #bfbfbf
+!urxvt.font: -xos4-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt.font: xft:terminus:pixelsize=14
+urxvt.visualBell: true
+urxvt.urgentOnBell: true
+urxvt.scrollstyle: plain
+urxvt.scrollBar_right: true
+urxvt.scrollWithBuffer: true
+urxvt.scrollTtyOutput: false
+urxvt.scrollTtyKeypress: true
+urxvt.saveLines: 10000
+urxvt.cursorBlink: true
+urxvt.pointerBlank: true
+urxvt.secondaryScroll: true
+urxvt.cutchars: "\\ `\"'&()*,;<=>?@[]{|}/"
+
+dzen2.font: terminus:pixelsize=12
+
+xmessage.center: TRUE
