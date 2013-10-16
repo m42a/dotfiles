@@ -42,7 +42,7 @@ alias mv='mv -i'
 alias ls='ls --color=auto'
 alias units='units -v'
 alias grep='grep --color=auto'
-alias yd='youtube-dl --no-part -v'
+alias yd='youtube-dl --no-part -v --no-playlist'
 
 export EDITOR=vim
 export PATH=$PATH:~/bin
