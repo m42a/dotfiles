@@ -23,7 +23,7 @@ set formatoptions=crnql
 set wrap
 set completeopt=menu,longest,preview
 set lbr				" wrap at breaks in long lines
-set wim=longest,list
+set wim=list:longest
 set shm=ilmr
 set report=0
 set ls=2			" puts the bar on the bottom
