@@ -23,11 +23,6 @@ import qualified XMonad.StackSet as W
 -- Have a convenient way to sink windows in my manage hook
 doSink = (ask >>= doF . W.sink)
 
--- Double carets so dzen doesn't get confused when they're in window titles
-doubleCarets [] = []
-doubleCarets ('^':cs) = '^':'^':(doubleCarets cs)
-doubleCarets (c:cs) = c:(doubleCarets cs)
-
 -- Leave space for trayer and the other dzen (my screen is 1600 wide)
 dzenCommand = "dzen2 -e 'button2=;' -x 250 -h 16 -w 1100"
 
@@ -57,7 +52,7 @@ myPP h = defaultPP {
 	-- Something requires my attention
 	ppUrgent = wrap "^fg(#f0b77f)" "^fg()",
 	-- Current window title
-	ppTitle = wrap "^fg(white)" "^fg()" . doubleCarets,
+	ppTitle = wrap "^fg(white)" "^fg()",
 	ppSep = " - ",
 	ppWsSep = " ",
 	ppOutput = hPutStrLn h
