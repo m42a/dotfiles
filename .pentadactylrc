@@ -8,3 +8,5 @@ set yankshort=!.*
 set defsearch=default
 set passkeys=theoldreader.com/:jk
 cmap <C-Return> .com<CR>
+cmap <S-Insert> <C-v><S-Insert>
+imap <S-Insert> <C-v><S-Insert>
