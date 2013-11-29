@@ -40,5 +40,9 @@ pidgin &
 # Dropbox likes to hang, so this might help it
 (dropbox stop ; dropbox start) &
 
+ulimit -c unlimited
+
+urxvt &
+
 exec xmonad
 
