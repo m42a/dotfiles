@@ -12,6 +12,7 @@ set number
 set cindent
 set autoindent
 set mouse=a			" use mouse in xterm to scroll
+set mousefocus			" focus follows mouse
 set scrolloff=5 		" 5 lines before and after the current line when scrolling
 set display=lastline		" Display incomplete lines instead of a bunch of @
 set ignorecase			" ignore case
