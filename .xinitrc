@@ -8,6 +8,8 @@ numlockx
 xbindkeys
 # Make the mouse accelerate faster
 xset m 19/10 0
+# Make the mouse slower
+~/razer_accel.sh
 # Disable the trackpad for a half-second after hitting a key
 syndaemon -i .5 -R -t -k -d
 # Lock the screen after 11 minutes of inactivity
@@ -37,8 +39,6 @@ conky
 wicd-gtk -t &
 
 pidgin &
-# Dropbox likes to hang, so this might help it
-(dropbox stop ; dropbox start) &
 
 ulimit -c unlimited
 
