@@ -45,4 +45,3 @@ ulimit -c unlimited
 urxvt &
 
 exec xmonad
-
