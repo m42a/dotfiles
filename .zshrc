@@ -2,7 +2,6 @@
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -31,8 +30,9 @@ if [[ "$ubuntu" == 1 ]]; then
 fi
 
 setopt hist_ignore_all_dups
-setopt append_history
-setopt interactivecomments
+setopt hist_reduce_blanks
+setopt inc_append_history
+setopt interactive_comments
 unsetopt list_ambiguous
 unsetopt list_beep
 
