@@ -1,5 +1,7 @@
 # Make everything the right color
 xrdb -merge ~/.Xresources
+# No, I really don't want to use Xcursor
+export XCURSOR_PATH=""
 # Don't make the cursor a giant X
 xsetroot -cursor_name left_ptr
 # Turn numlock on
@@ -16,6 +18,7 @@ syndaemon -i .5 -R -t -k -d
 xscreensaver &
 # Recheck all the fonts
 xset +fp /usr/share/fonts/local
+xset +fp /usr/share/fonts/artwiz-fonts
 xset fp rehash
 
 # Fix stupid X vulnerability
