@@ -1,5 +1,9 @@
 # Make everything the right color
 xrdb -merge ~/.Xresources
+# Recheck all the fonts
+xset +fp /usr/share/fonts/local
+xset +fp /usr/share/fonts/artwiz-fonts
+xset fp rehash
 # No, I really don't want to use Xcursor
 export XCURSOR_PATH=""
 # Don't make the cursor a giant X
@@ -16,10 +20,6 @@ xset m 19/10 0
 syndaemon -i .5 -R -t -k -d
 # Lock the screen after 11 minutes of inactivity
 xscreensaver &
-# Recheck all the fonts
-xset +fp /usr/share/fonts/local
-xset +fp /usr/share/fonts/artwiz-fonts
-xset fp rehash
 
 # Fix stupid X vulnerability
 xmodmap -e "keycode  63 = KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply NoSymbol"
