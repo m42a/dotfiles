@@ -1,30 +1,29 @@
 import XMonad
-import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS
-import XMonad.Actions.KeyRemap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.LayoutHints
 import XMonad.Layout.NoBorders
 import XMonad.ManageHook
-import XMonad.Util.Loggers
-import XMonad.Util.Run
 import XMonad.Util.EZConfig
-import System.IO
+import XMonad.Util.Run
 
 import qualified XMonad.StackSet as W
 
+getScreenWidth = do
+	d <- openDisplay ""
+	let s = defaultScreenOfDisplay d
+	let w = widthOfScreen s
+	closeDisplay d
+	return w
+
 -- Have a convenient way to sink windows in my manage hook
 doSink = (ask >>= doF . W.sink)
-
--- Leave space for trayer and the other dzen (my screen is 1600 wide)
-dzenCommand = "dzen2 -e 'button2=;' -x 250 -h 16 -w 1100"
 
 -- Put all my IMs on desktop 8 and prevent xmonad recompilation errors from
 -- resizing my windows, plus tile/float my games
@@ -42,6 +41,12 @@ myManageHook = composeAll [
 myLayoutHook = avoidStruts (smartBorders tall ||| smartBorders (Mirror tall) ||| smartBorders Full ||| (layoutHintsToCenter $ smartBorders Full))
 	where tall = Tall 1 (3/100) (1/2)
 
+-- Leave space for trayer and the other dzen
+getDzenCommand = do
+	width <- getScreenWidth
+	-- Strictly evaluate width before returning
+	seq width $ return $ "dzen2 -e 'button2=;' -x 250 -h 16 -w " ++ show (width - 500)
+
 -- Make dzen have nice colors
 myPP h = defaultPP {
 	-- Selected workspace
@@ -56,7 +61,7 @@ myPP h = defaultPP {
 	ppSep = " - ",
 	ppWsSep = " ",
 	ppOutput = hPutStrLn h
-	}
+}
 
 dzenLogHook = dynamicLogWithPP . myPP
 
@@ -99,5 +104,6 @@ myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh defaultConfig {
 	myKeys
 
 main = do
+	dzenCommand <- getDzenCommand
 	dzen <- spawnPipe dzenCommand
 	xmonad $ myConfig dzen
