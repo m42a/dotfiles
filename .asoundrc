@@ -1,80 +1,49 @@
-#pcm.!default {
-#type plug
-#slave.pcm "ladcomp_compressor"
-#capture.pcm  "dsnoop"
-#}
+# ALSA library configuration file
 
-# This is so stupid
-# I have no idea what's going on anymore
-#pcm.pass {
-#	type plug
-#	slave {
-#		pcm ladcomp_compressor
-#		format FLOAT
-#	}
-#}
+# Include settings that are under the control of asoundconf(1).
+# (To disable these settings, comment out this line.)
+</home/m42a/.asoundrc.asoundconf>
 
-pcm.ladcomp_compressor {
-	type ladspa
-	slave.pcm "ladcomp_limiter";
-	path "/usr/lib/ladspa/";
-	plugins [
+# Override the default output
+pcm.!default
+{
+	# Allow both capture and playback
+	type = asym
+	playback.pcm
 	{
-		label dysonCompress
-		input {
-			#peak limit, release time, fast ratio, ratio
-			controls [0 1 0.5 0.99]
+		# Convert from the source format to whatever format we need
+		type = plug
+		slave.pcm
+		{
+			# Apply the plugins listed below
+			type = ladspa
+			# After processing the sound, send it to the previous default output
+			slave.pcm = cards.pcm.default
+
+			playback_plugins [
+			{
+				id = 1403
+				label = "dysonCompress"
+				input.controls
+				{
+					"Peak limit (dB)" = 0 # Default 0
+					"Release time (s)" = 1 # Default 0.25
+					"Fast compression ratio" = 0.5 # Default 0.5
+					"Compression ratio" = 0.9 # Default 0.5
+				}
+			}
+			{
+				id = 1913
+				label = "fastLookaheadLimiter"
+				input.controls
+				{
+					"Input gain (dB)" = 10 # Default 0
+					"Limit (dB)" = 0 # Default 0
+					"Release time (s)" 0.5 # Default 0.5
+				}
+			} ]
 		}
 	}
-	]
+	# Don't modify the input
+	capture.pcm = cards.pcm.default
 }
-
-pcm.ladcomp_limiter {
-	type ladspa
-	slave.pcm "plug:dmix"
-	path "/usr/lib/ladspa/";
-	plugins [
-	{
-		label fastLookaheadLimiter
-		input {
-			#InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
-			controls [ 20 0 0.8  ]
-		}
-	}
-	]
-}
-
-pcm.!default {
-	type            asym
-	playback.pcm        "plug:ladcomp_compressor"
-	capture.pcm        "plug:dsnoop" 
-}
-
-pcm.null {
-	type null
-}
-
-pcm.dummy {
-	type hw
-	card 0
-}
-
-ctl.dummy {
-	type hw
-	card 0
-}
-
-#pcm.dmixplug {
-#	type plug
-#	slave {
-#		pcm dmix
-#	}
-#}
-
-#pcm.dmix0 {
-#	type dmix
-#	ipc_key 11334
-#	slave {
-#		pcm "hw:0,0"
-#	}
-#}
