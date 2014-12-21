@@ -21,7 +21,7 @@ syndaemon -i .5 -R -t -k -d
 # Lock the screen after 11 minutes of inactivity
 xscreensaver &
 
-# Fix stupid X vulnerability
+# Fix CVE-2012-0064
 xmodmap -e "keycode  63 = KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply NoSymbol"
 xmodmap -e "keycode 106 = KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide NoSymbol"
 
@@ -35,11 +35,12 @@ autocutsel -selection PRIMARY -fork
 
 # Add the tray and date
 trayer --heighttype pixel --height 16 --widthtype pixel --width 100 --edge top --alpha 0 --transparent true --tint 0x121212 --align right --margin 150 &
-while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x 1450 -w 150 -h 16 &
+width=$(xrandr -q | sed -n 's/^.*[^0-9]\([0-9]*\)x[0-9]*+0+0.*$/\1/p')
+while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((width-150)) -w 150 -h 16 &
 conky
 
-# Add a wicd tray icon
-wicd-gtk -t &
+# Add a connman tray icon
+cmst --minimized &
 
 pidgin &
 
