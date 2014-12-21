@@ -39,6 +39,9 @@ width=$(xrandr -q | sed -n 's/^.*[^0-9]\([0-9]*\)x[0-9]*+0+0.*$/\1/p')
 while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((width-150)) -w 150 -h 16 &
 conky
 
+# Use both the 32 and 64-bit ladspa plugins
+export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
+
 # Add a connman tray icon
 cmst --minimized &
 
