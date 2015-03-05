@@ -43,6 +43,7 @@ alias ls='ls --color=auto'
 alias units='units -v'
 alias grep='grep --color=auto'
 alias yd='youtube-dl --no-part -v --no-playlist'
+alias skype='apulse32 skype'
 
 export EDITOR=vim
 export PATH=$PATH:~/bin
