@@ -4,6 +4,10 @@ xrdb -merge ~/.Xresources
 xset +fp /usr/share/fonts/local
 xset +fp /usr/share/fonts/artwiz-fonts
 xset fp rehash
+# Enable ibus in applications
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 # No, I really don't want to use Xcursor
 export XCURSOR_PATH=""
 # Don't make the cursor a giant X
@@ -46,6 +50,8 @@ export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
 cmst --minimized &
 
 pidgin &
+
+ibus-daemon -rx &
 
 ulimit -c unlimited
 
