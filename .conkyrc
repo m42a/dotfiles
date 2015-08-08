@@ -1,69 +1,72 @@
-# Conky, a system monitor, based on torsmo
-#
-# Any original torsmo code is licensed under the BSD license
-#
-# All code written since the fork of torsmo is licensed under the GPL
-#
-# Please see COPYING for details
-#
-# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
-# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
-# All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+conky.config = {
+-- Conky, a system monitor, based on torsmo
 
-alignment top_left
-background yes
-border_width 0
-border_inner_margin 0
-border_outer_margin 0
-cpu_avg_samples 1
-default_color white
-default_outline_color white
-default_shade_color white
-draw_borders no
-draw_outline no
-draw_shades no
-use_xft yes
-xftfont terminus:pixelsize=12
-# Conky defaults to -1 -1 for some reason, so nudge it into the actual corner
-gap_x 1
-gap_y 1
-# In order to make the window height 16 pixels, it needs to be specified as 14
-# pixels.  Same with the width.
-minimum_size 248 14
-maximum_width 248
-net_avg_samples 1
-no_buffers yes
-out_to_console no
-out_to_stderr no
-extra_newline no
-own_window yes
-own_window_class Conky
-own_window_colour 111111
-own_window_type panel
-own_window_hints undecorated,below
-stippled_borders 0
-update_interval 10
-uppercase no
-use_spacer right
-show_graph_scale no
-show_graph_range no
+-- Any original torsmo code is licensed under the BSD license
 
-TEXT
+-- All code written since the fork of torsmo is licensed under the GPL
+
+-- Please see COPYING for details
+
+-- Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+-- Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+-- All rights reserved.
+
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+-- You should have received a copy of the GNU General Public License
+-- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+	alignment = 'top_left',
+	background = true,
+	border_width = 1,
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+	cpu_avg_samples = 1,
+	default_color = 'white',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	draw_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+	use_xft = true,
+	font = 'terminus:pixelsize=12',
+-- Conky defaults to -1 -1 for some reason, so nudge it into the actual corner
+	gap_x = 1,
+	gap_y = 1,
+-- In order to make the window height 16 pixels, it needs to be specified as 14
+-- pixels.  Same with the width.
+	minimum_width = 248, minimum_height = 14,
+	maximum_width = 248,
+	net_avg_samples = 1,
+	no_buffers = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_colour = '#111111',
+	own_window_type = 'panel',
+	own_window_hints = 'undecorated,below',
+	stippled_borders = 0,
+	update_interval = 10,
+	uppercase = false,
+	use_spacer = 'right',
+	show_graph_scale = false,
+	show_graph_range = false,
+
+};
+
+conky.text = [[
 ${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${color red}↓${font}${downspeedf wlan0}\
-${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -2}${color green}↑${font}${upspeedf wlan0}\
+${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -1}${color green}↑${font}${upspeedf wlan0}\
 ${goto 183}${color grey}${uptime}\
 ${goto 111}${color dark turquoise}${mem}\
 ${if_match "${battery_short}"=="D ${battery_percent}%"}${color red}${else}\
@@ -73,3 +76,4 @@ ${color white}\
 ${endif}${endif}${endif}\
 ${goto 0}${alignr 70}${battery_percent}%${voffset -12}
 ${goto 0}${alignr 140}${color gold}${cpu cpu0}%\
+]];
