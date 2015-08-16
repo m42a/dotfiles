@@ -64,6 +64,8 @@ export PKGSYSTEM_DISABLE_FSYNC=1
 
 # Use both the 32 and 64-bit ladspa plugins
 export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
+# Make QT5 applications look like QT4 applications
+export QT_STYLE_OVERRIDE=qt4
 
 pom
 fortune -c
