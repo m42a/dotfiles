@@ -39,11 +39,21 @@ xmodmap -e "keycode  84 = KP_Down KP_5 KP_Down KP_5"
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
+# Get the primary monitor attributes
+read width height x_off y_off << EOF
+$(xrandr -q | awk -f monitor-select.awk)
+EOF
+
 # Add the tray and date
-trayer --heighttype pixel --height 16 --widthtype pixel --width 100 --edge top --alpha 0 --transparent true --tint 0x121212 --align right --margin 150 &
-width=$(xrandr -q | sed -n 's/^.*[^0-9]\([0-9]*\)x[0-9]*+0+0.*$/\1/p')
-while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((width-150)) -w 150 -h 16 &
-conky
+trayer \
+	--heighttype pixel --height 16 \
+	--widthtype pixel --width 100 \
+	--edge top --distance ${y_off} \
+	--align left --margin $((x_off+width-250)) \
+	--alpha 0 --transparent true --tint 0x121212 \
+	&
+while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((x_off+width-150)) -w 150 -y ${y_off} -h 16 &
+conky -x $((x_off+1)) -y $((y_off+1))
 
 # Use both the 32 and 64-bit ladspa plugins
 export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa

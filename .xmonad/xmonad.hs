@@ -15,12 +15,14 @@ import XMonad.Util.Run
 
 import qualified XMonad.StackSet as W
 
-getScreenWidth = do
+getScreenDimensions = do
 	d <- openDisplay ""
-	let s = defaultScreenOfDisplay d
-	let w = widthOfScreen s
+	monitors <- getCleanedScreenInfo d
+	let m = case monitors of
+		s:_ -> s
+		_ -> Rectangle 0 0 0 0
 	closeDisplay d
-	return w
+	return m
 
 -- Have a convenient way to sink windows in my manage hook
 doSink = (ask >>= doF . W.sink)
@@ -43,9 +45,9 @@ myLayoutHook = avoidStruts (smartBorders tall ||| smartBorders (Mirror tall) |||
 
 -- Leave space for trayer and the other dzen
 getDzenCommand = do
-	width <- getScreenWidth
-	-- Strictly evaluate width before returning
-	seq width $ return $ "dzen2 -e 'button2=;' -x 250 -h 16 -w " ++ show (width - 500)
+	rect <- getScreenDimensions
+	-- Strictly evaluate rect before returning
+	seq rect $ return $ "dzen2 -e 'button2=;' -x " ++ show (rect_x rect + 250) ++ " -y " ++ show (rect_y rect) ++ " -h 16 -w " ++ show (rect_width rect - 500)
 
 -- Make dzen have nice colors
 myPP h = defaultPP {
