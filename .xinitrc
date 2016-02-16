@@ -53,6 +53,7 @@ trayer \
 	--alpha 0 --transparent true --tint 0x121212 \
 	&
 while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((x_off+width-150)) -w 150 -y ${y_off} -h 16 &
+# Conky defaults to -1 -1 for some reason, so nudge it into the actual corner
 conky -x $((x_off+1)) -y $((y_off+1))
 
 # Use both the 32 and 64-bit ladspa plugins
