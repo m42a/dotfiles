@@ -62,6 +62,9 @@ export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Make update-mime-database not take 3 years to finish
 export PKGSYSTEM_DISABLE_FSYNC=1
 
+# Make ls output filenames without extra decoration
+export QUOTING_STYLE=literal
+
 # Use both the 32 and 64-bit ladspa plugins
 export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
 # Make QT5 applications look like QT4 applications
