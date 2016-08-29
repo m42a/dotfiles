@@ -20,7 +20,7 @@ set smartcase			" but only sometimes
 set hls
 set hid 			" allow switching buffers, which have unsaved changes
 set showmatch
-set formatoptions=crnql
+set formatoptions=crnqlj
 set wrap
 set completeopt=menu,longest,preview
 set lbr				" wrap at breaks in long lines
