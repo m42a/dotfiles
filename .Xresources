@@ -13,7 +13,7 @@ urxvt.saveLines: 10000
 urxvt.cursorBlink: true
 urxvt.pointerBlank: true
 urxvt.secondaryScroll: true
-urxvt.cutchars: "\\ `\"'&()*,;<=>?@[]{|}/"
+urxvt.cutchars: "\\ `\"'&()*,:;<=>?@[]{|}/"
 
 dzen2.font: terminus:pixelsize=12
 
