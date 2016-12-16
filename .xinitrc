@@ -45,12 +45,12 @@ $(xrandr -q | awk -f monitor-select.awk)
 EOF
 
 # Add the tray and date
-trayer \
-	--heighttype pixel --height 16 \
-	--widthtype pixel --width 100 \
-	--edge top --distance ${y_off} \
-	--align left --margin $((x_off+width-250)) \
-	--alpha 0 --transparent true --tint 0x121212 \
+stalonetray \
+	--background "#121212" \
+	--icon-size 16 \
+	--icon-gravity NE \
+	--geometry 6x1+$((x_off+width-246))+${y_off} \
+	--max-geometry 6x1 \
 	&
 while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((x_off+width-150)) -w 150 -y ${y_off} -h 16 &
 # Conky defaults to -1 -1 for some reason, so nudge it into the actual corner

@@ -48,7 +48,7 @@ myLayoutHook = avoidStruts (smartBorders tall ||| smartBorders (Mirror tall) |||
 getDzenCommand = do
 	rect <- getScreenDimensions
 	-- Strictly evaluate rect before returning
-	seq rect $ return $ "dzen2 -e 'button2=;' -x " ++ show (rect_x rect + 250) ++ " -y " ++ show (rect_y rect) ++ " -h 16 -w " ++ show (rect_width rect - 500)
+	seq rect $ return $ "dzen2 -e 'button2=;' -x " ++ show (rect_x rect + 250) ++ " -y " ++ show (rect_y rect) ++ " -h 16 -w " ++ show (rect_width rect - 496)
 
 -- Make dzen have nice colors
 myPP h = defaultPP {
