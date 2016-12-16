@@ -33,6 +33,7 @@ myManageHook = composeAll [
 	isDialog --> doCenterFloat,
 	className =? "Xmessage" --> doFloat,
 	className =? "Pidgin" --> doShift "8",
+	className =? "hl2_linux" --> doSink,
 	title =? "Jamestown" --> doFloat,
 	title =? "osu!" --> doSink,
 	manageDocks]
