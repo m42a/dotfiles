@@ -61,8 +61,8 @@ conky.config = {
 };
 
 conky.text = [[
-${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${color red}↓${font}${downspeedf wlan0}\
-${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -1}${color green}↑${font}${upspeedf wlan0}\
+${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${color red}↓${font}${downspeedf eth0}\
+${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -1}${color green}↑${font}${upspeedf eth0}\
 ${goto 183}${color grey}${uptime}\
 ${goto 111}${color dark turquoise}${mem}\
 ${if_match "${battery_short}"=="D ${battery_percent}%"}${color red}${else}\
