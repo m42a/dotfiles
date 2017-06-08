@@ -35,8 +35,8 @@ myManageHook = composeAll [
 	className =? "Pidgin" --> doShift "8",
 	className =? "hl2_linux" --> doSink,
 	title =? "Jamestown" --> doFloat,
-	title =? "osu!" --> doSink,
-	manageDocks]
+	title =? "osu!" --> doSink
+	]
 
 -- The default plus an option to center the current window instead of
 -- stretching it.  Then don't draw borders if there's only 1 window on the
@@ -96,7 +96,7 @@ myKeys conf =
 		| (i, k) <- zip (workspaces conf) [xK_1 ..]]
 
 -- Highlight urgent windows and enable Extended Hints
-myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh defaultConfig {
+myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh $ docks defaultConfig {
 	terminal = "urxvt",
 	modMask = mod4Mask,
 	logHook = dzenLogHook dzen >> takeTopFocus,
