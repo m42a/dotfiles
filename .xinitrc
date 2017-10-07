@@ -14,6 +14,8 @@ export XCURSOR_PATH=""
 xsetroot -cursor_name left_ptr
 # Make QT5 applications look like QT4 applications
 export QT_STYLE_OVERRIDE=qt4
+# Make AWT and SWING less terrible
+export _JAVA_AWT_WM_NONREPARENTING=1
 # Turn numlock on
 numlockx
 # Enable the volume keys
