@@ -6,6 +6,6 @@ set maxitems=10
 set vb
 set yankshort=!.*
 set defsearch=default
-set passkeys=theoldreader.com/:jk,reader.aol.com:jk
+set passkeys=theoldreader.com/:jk,reader.aol.com:jk,www.inoreader.com:jk
 set followhints=1
 cmap <C-Return> .com<CR>
