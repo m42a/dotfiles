@@ -1,0 +1,12 @@
+set blame-options = -w -C -C -C
+set horizontal-scroll = 20%
+set show-changes = false
+set ignore-space = some
+set ignore-case = smart-case
+set mouse = true
+
+set main-view = line-number:no,interval=5 date:default id:yes,color author:abbreviated commit-title:yes,graph,refs,overflow=no
+set blame-view = date:default id:yes,color author:abbreviated file-name:auto line-number:yes,interval=1 text
+
+set main-view-date-local = true
+set blame-view-date-local = true
