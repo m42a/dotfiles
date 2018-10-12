@@ -1,0 +1,11 @@
+# C family
+*.c	diff=cpp
+*.cpp	diff=cpp
+*.cxx	diff=cpp
+*.h	diff=cpp
+*.hpp	diff=cpp
+*.ipp	diff=cpp
+# CSharp
+*.cs	diff=csharp
+# HTML
+*.html	diff=html
