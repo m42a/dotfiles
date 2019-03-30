@@ -34,6 +34,7 @@ myManageHook = composeAll [
 	className =? "Xmessage" --> doFloat,
 	className =? "Pidgin" --> doShift "8",
 	className =? "hl2_linux" --> doSink,
+	className =? "xfreerdp" --> doSink,
 	title =? "Jamestown" --> doFloat,
 	title =? "osu!" --> doSink
 	]
