@@ -67,10 +67,14 @@ cmst --minimized &
 
 pidgin &
 
+# Don't let the screen sleep while I'm pressing controller buttons
+joystickwake &
+
 ibus-daemon -rx &
 
 ulimit -c unlimited
 
 urxvt &
 
+xmonad --recompile
 exec xmonad
