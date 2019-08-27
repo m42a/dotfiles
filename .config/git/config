@@ -1,0 +1,20 @@
+# Settings in this file will be overwritten by ~/.gitconfig
+[core]
+	editor = vim
+[color]
+	ui = true
+[diff]
+	colorMoved = default
+	colorMovedWS = allow-indentation-change
+	indentHeuristic = true
+[grep]
+	column = true
+	lineNumber = true
+[index]
+	threads = true
+[pull]
+	ff = only
+[push]
+	recurseSubmodules = check
+[status]
+	showStash = true
