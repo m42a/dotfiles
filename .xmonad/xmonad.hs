@@ -35,6 +35,7 @@ myManageHook = composeAll [
 	className =? "Pidgin" --> doShift "8",
 	className =? "hl2_linux" --> doSink,
 	className =? "xfreerdp" --> doSink,
+	appName =? "noita.exe" --> doSink,
 	title =? "Jamestown" --> doFloat,
 	title =? "osu!" --> doSink
 	]
