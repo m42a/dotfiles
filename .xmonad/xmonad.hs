@@ -27,12 +27,14 @@ getScreenDimensions = do
 -- resizing my windows, plus tile/float my games
 myManageHook = composeAll [
 	isDialog --> doCenterFloat,
+	(className =? "zoom" <||> className =? "zoom ") <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore,
 	className =? "Xmessage" --> doFloat,
 	className =? "Pidgin" --> doShift "8",
 	className =? "hl2_linux" --> doSink,
 	className =? "xfreerdp" --> doSink,
 	appName =? "noita.exe" --> doSink,
 	title =? "Jamestown" --> doFloat,
+	title =? "XMonad-Float - Wine desktop" --> doFloat,
 	title =? "osu!" --> doSink
 	]
 
