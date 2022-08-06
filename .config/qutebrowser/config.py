@@ -43,7 +43,7 @@ c.colors.tabs.pinned.odd.fg = c.colors.tabs.odd.fg
 c.fonts.web.size.minimum = 6
 
 if platform == "linux":
-    clipboard = "{selection}"
+    clipboard = "{primary}"
 else:
     clipboard = "{clipboard}"
 
@@ -67,8 +67,8 @@ if platform == 'win32':
     # Bindings for insert mode
     config.bind('<Shift+Ins>', f'insert-text {clipboard}', mode='insert')
 
-if platform == "linux" and "Terminus" not in c.fonts.monospace:
-    c.fonts.monospace = "xos4 Terminus, Terminus, " + c.fonts.monospace
+if platform == "linux" or platform == "win32":
+    c.fonts.default_family = ["Terminus", "xos4 Terminus", "Terminus (TTF) for Windows"]
 
 # Allow machine-specific settings to override these settings
 config.load_autoconfig()
