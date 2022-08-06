@@ -37,7 +37,7 @@ conky.config = {
 	draw_outline = false,
 	draw_shades = false,
 	use_xft = true,
-	font = 'xos4 terminus:pixelsize=12',
+	font = 'xos4 Terminus:pixelsize=12',
 -- In order to make the window height 16 pixels, it needs to be specified as 14
 -- pixels.  Same with the width.
 	minimum_width = 248, minimum_height = 14,
