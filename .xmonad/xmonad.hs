@@ -3,7 +3,6 @@ import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
@@ -23,9 +22,6 @@ getScreenDimensions = do
 		_ -> Rectangle 0 0 0 0
 	closeDisplay d
 	return m
-
--- Have a convenient way to sink windows in my manage hook
-doSink = (ask >>= doF . W.sink)
 
 -- Put all my IMs on desktop 8 and prevent xmonad recompilation errors from
 -- resizing my windows, plus tile/float my games
@@ -53,7 +49,7 @@ getDzenCommand = do
 	seq rect $ return $ "dzen2 -e 'button2=;' -x " ++ show (rect_x rect + 250) ++ " -y " ++ show (rect_y rect) ++ " -h 16 -w " ++ show (rect_width rect - 496)
 
 -- Make dzen have nice colors
-myPP h = defaultPP {
+myPP h = def {
 	-- Selected workspace
 	ppCurrent = wrap "^fg(#77d7d7)" "^fg()",
 	-- Deselected workspaces
@@ -98,10 +94,10 @@ myKeys conf =
 		| (i, k) <- zip (workspaces conf) [xK_1 ..]]
 
 -- Highlight urgent windows and enable Extended Hints
-myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh $ docks defaultConfig {
+myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh $ docks def {
 	terminal = "urxvt",
 	modMask = mod4Mask,
-	logHook = dzenLogHook dzen >> takeTopFocus,
+	logHook = dzenLogHook dzen,
 	layoutHook = myLayoutHook,
 	manageHook = myManageHook
 	}
