@@ -61,7 +61,7 @@ conky.config = {
 };
 
 conky.text = [[
-${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${color red}↓${font}${downspeedf eth0}\
+${voffset -2}${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${color red}↓${font}${downspeedf eth0}\
 ${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -1}${color green}↑${font}${upspeedf eth0}\
 ${goto 183}${color grey}${uptime}\
 ${goto 111}${color dark turquoise}${mem}\
@@ -70,6 +70,6 @@ ${if_match "${battery_short}"=="C ${battery_percent}%"}${color orange}${else}\
 ${if_match "${battery_short}"=="F"}${color green}${else}\
 ${color white}\
 ${endif}${endif}${endif}\
-${goto 0}${alignr 70}${battery_percent}%${voffset -12}
+${goto 0}${alignr 65}${hwmon 1 temp 1}${offset -6}${voffset 1}°${voffset -13}
 ${goto 0}${alignr 140}${color gold}${cpu cpu0}%\
 ]];
