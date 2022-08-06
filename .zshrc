@@ -42,8 +42,7 @@ alias mv='mv -i'
 alias ls='ls --color=auto'
 alias units='units -v'
 alias grep='grep --color=auto'
-alias yd='youtube-dl --no-part -v --no-playlist --add-metadata'
-alias skype='apulse32 skype'
+alias yd='yt-dlp --no-part -v --no-playlist --add-metadata'
 
 export EDITOR=vim
 export PATH=$PATH:~/bin
@@ -67,8 +66,6 @@ export QUOTING_STYLE=literal
 
 # Use both the 32 and 64-bit ladspa plugins
 export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
-# Make QT5 applications look like QT4 applications
-export QT_STYLE_OVERRIDE=qt4
 
 pom
 fortune -c
