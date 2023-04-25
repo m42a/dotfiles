@@ -13,6 +13,29 @@ pcm.!default
 	{
 		# Convert from the source format to whatever format we need
 		type = plug
+		# I can't figure out how to set a maximum of 2 channels, so downmix 7.1 surround sound into stereo in case something tries to do that
+		ttable
+		{
+			# Front left
+			0.0 = 1
+			# Front right
+			1.1 = 1
+			# Back left
+			2.0 = 1
+			# Back right
+			3.1 = 1
+			# Front center
+			4.0 = 0.5
+			4.1 = 0.5
+			# Low frequency
+			5.0 = 0.5
+			5.1 = 0.5
+			# Side left
+			6.0 = 1
+			# Side right
+			7.1 = 1
+		}
+
 		slave.pcm
 		{
 			# Apply the plugins listed below
