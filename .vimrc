@@ -37,7 +37,7 @@ set ttyfast
 set grepprg="grep -nH $*"
 set spellfile=~/.vim/custom.UTF-8.add
 "set spell
-if &term == 'rxvt-unicode-256color'
+if &term == 'rxvt-unicode-256color' && !has('patch-9.0.1168')
 	set ttymouse=urxvt
 endif
 syn on
