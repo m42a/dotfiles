@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Make everything the right color
 xrdb -merge ~/.Xresources
 # Recheck all the fonts
@@ -12,8 +14,6 @@ export QT_IM_MODULE=ibus
 export XCURSOR_PATH=""
 # Don't make the cursor a giant X
 xsetroot -cursor_name left_ptr
-# Make QT5 applications look like QT4 applications
-export QT_STYLE_OVERRIDE=qt4
 # Make AWT and SWING less terrible
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Turn numlock on
