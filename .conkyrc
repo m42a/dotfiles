@@ -25,8 +25,8 @@ conky.config = {
 
 
 	alignment = 'top_left',
-	background = true,
-	border_width = 1,
+	background = false,
+	border_width = 0,
 	border_inner_margin = 0,
 	border_outer_margin = 0,
 	cpu_avg_samples = 1,
@@ -38,10 +38,8 @@ conky.config = {
 	draw_shades = false,
 	use_xft = true,
 	font = 'xos4 Terminus:pixelsize=12',
--- In order to make the window height 16 pixels, it needs to be specified as 14
--- pixels.  Same with the width.
-	minimum_width = 248, minimum_height = 14,
-	maximum_width = 248,
+	minimum_width = 250, minimum_height = 16,
+	maximum_width = 250,
 	net_avg_samples = 1,
 	no_buffers = true,
 	out_to_console = false,
