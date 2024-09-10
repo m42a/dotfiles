@@ -42,12 +42,10 @@ alias mv='mv -i'
 alias ls='ls --color=auto'
 alias units='units -v'
 alias grep='grep --color=auto'
-alias yd='yt-dlp --no-part -v --no-playlist --add-metadata'
+alias yd='yt-dlp --no-part -v --no-playlist --add-metadata --remux-video mkv'
 
 export EDITOR=vim
 export PATH=$PATH:~/bin
-# Make systemd not page
-export SYSTEMD_PAGER=
 
 # Make everything colorful
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -64,8 +62,10 @@ export PKGSYSTEM_DISABLE_FSYNC=1
 # Make ls output filenames without extra decoration
 export QUOTING_STYLE=literal
 
-# Use both the 32 and 64-bit ladspa plugins
-export LADSPA_PATH=/usr/lib/ladspa:/usr/lib32/ladspa
+# Use both the 32 and 64-bit ladspa plugins, and add /run/host/... for steam
+export LADSPA_PATH=/run/host/usr/lib/ladspa:/usr/lib/ladspa:/usr/lib32/ladspa
+
+export DEBUGINFOD_CACHE_PATH=/data/debuginfo_cache/m42a/
 
 pom
 fortune -c
