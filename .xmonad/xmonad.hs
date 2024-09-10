@@ -96,7 +96,7 @@ myKeys conf =
 		| (i, k) <- zip (workspaces conf) [xK_1 ..]]
 
 -- Highlight urgent windows and enable Extended Hints
-myConfig dzen = withUrgencyHook NoUrgencyHook $ ewmh $ docks def {
+myConfig dzen = withUrgencyHook NoUrgencyHook $ setEwmhActivateHook doAskUrgent . ewmh $ docks def {
 	terminal = "urxvt",
 	modMask = mod4Mask,
 	logHook = dzenLogHook dzen,
