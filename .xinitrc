@@ -54,8 +54,8 @@ stalonetray \
 	--geometry 6x1+$((x_off+width-246))+${y_off} \
 	--max-geometry 6x1 \
 	&
-while true; do date +%Y.%m.%d\ %a\ %T; sleep 1; done | dzen2 -e 'button2=;' -x $((x_off+width-150)) -w 150 -y ${y_off} -h 16 &
 
+ruby -e 'loop { t=Time.now; puts t.strftime "%Y.%m.%d %a %T"; $stdout.flush; sleep(-t.to_f % 1) }' | dzen2 -dock -e 'button2=;' -x $((x_off+width-150)) -w 150 -y ${y_off} -h 16 &
 # Newer versions of conky have xinerama support, and will position themselves relative to the primary monitor
 conky -x 0 -y 0 &
 
