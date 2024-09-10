@@ -18,3 +18,5 @@
 	recurseSubmodules = check
 [status]
 	showStash = true
+[alias]
+	merge-w = merge -Xignore-space-change
