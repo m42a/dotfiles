@@ -43,7 +43,7 @@ autocutsel -selection PRIMARY -fork
 
 # Get the primary monitor attributes
 read width height x_off y_off << EOF
-$(xrandr -q | awk -f monitor-select.awk)
+$(xrandr --current --query | awk -f monitor-select.awk)
 EOF
 
 # Add the tray and date
