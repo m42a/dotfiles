@@ -65,11 +65,7 @@ ${voffset -2}${goto 0}${font sazanami mincho:pixelsize=12:antialias=false}${colo
 ${goto 42}${font sazanami mincho:pixelsize=12:antialias=false}${voffset -1}${color green}↑${font}${upspeedf eth0}\
 ${goto 183}${color grey}${uptime}\
 ${goto 111}${color dark turquoise}${mem}\
-${if_match "${battery_short}"=="D ${battery_percent}%"}${color red}${else}\
-${if_match "${battery_short}"=="C ${battery_percent}%"}${color orange}${else}\
-${if_match "${battery_short}"=="F"}${color green}${else}\
 ${color white}\
-${endif}${endif}${endif}\
-${goto 0}${alignr 65}${hwmon 1 temp 1}${offset -6}${voffset 1}°${voffset -13}
-${goto 0}${alignr 140}${color gold}${cpu cpu0}%\
+${goto 0}${alignr 67}${hwmon k10temp temp 1}${offset -6}${voffset 1}°${voffset -13}
+${goto 0}${alignr 142}${color gold}${cpu cpu0}%\
 ]];
