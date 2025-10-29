@@ -37,7 +37,7 @@ conky.config = {
 	draw_outline = false,
 	draw_shades = false,
 	use_xft = true,
-	font = 'xos4 Terminus:pixelsize=12',
+	font = 'Terminus:pixelsize=12',
 	minimum_width = 250, minimum_height = 16,
 	maximum_width = 250,
 	net_avg_samples = 1,
