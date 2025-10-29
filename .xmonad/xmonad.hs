@@ -27,6 +27,7 @@ getScreenDimensions = do
 -- resizing my windows, plus tile/float my games
 myManageHook = composeAll [
 	isDialog --> doCenterFloat,
+	(className =? "zoom" <||> className =? "zoom ") <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" <&&> title =? "Meeting" --> doSink,
 	(className =? "zoom" <||> className =? "zoom ") <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore,
 	className =? "Xmessage" --> doFloat,
 	className =? "Pidgin" --> doShift "8",
