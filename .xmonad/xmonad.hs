@@ -106,6 +106,8 @@ myConfig dzen = withUrgencyHook NoUrgencyHook $ setEwmhActivateHook doAskUrgent 
 	}
 	`addKeys`
 	myKeys
+	`removeKeys`
+	[(mod4Mask .|. shiftMask, xK_q)]
 
 main = do
 	dzenCommand <- getDzenCommand
